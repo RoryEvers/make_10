@@ -16,13 +16,11 @@ This application will enhance the experience of people playing the game "Make 10
 
 Although it is simple to check whether an equation equals 10 or not, it is more difficult to find solutions when the player is stuck. When I was in high school I used to play this game with my friends, and even made a simple program that could find solutions in a very inelegant way, by iterating through thousands of lines of written code to try every combination. I would like to create a more elegant solution that could still make use of a computer's ability to quickly try thousands of combinations. 
 
-**This app would have two main functions:** 
+**This app would ideally have two main features and a variety of smaller features that would improve the user experience** 
 
 **1) the ability to find known solutions for a particular pattern**
 
 **2) play a game where the program provides solvable patterns of different difficulties (judged by quantity of operations and possibly also number of possible solutions)**
-
-
 
 - **identify the target audience**
 
@@ -38,6 +36,58 @@ For the purposes of this assignment the app would exist only as a .exe file and 
 - **use of variables and the concept of variable scope**
 - **loops and conditional control structures**
 - **error handling**
+
+
+
+This app will be made in phases with increasing functionality as time allows. 
+
+#### Phase One 
+
+To build the minimum viable product. A calculator that can find and print a single solution to a 4 digit number pattern and then end without finding all possible solutions, using only single digit numbers, and would use modules to avoid repetitious code. This would involve several features:
+
+##### Display a welcome message
+
+##### Display instructions
+
+##### Give users the choice to play
+
+##### Have the user input 4 numbers
+
+##### Calculate how  to solve the pattern
+
+##### Print the solution for the user if there is one, or display a message that no solution was found, give the choice to continue
+
+
+
+#### Phase Two
+
+##### Expanded capability to solve patterns by also trialling combinations with two digit numbers
+
+##### Print how many combinations were tested before finding a solution
+
+
+
+#### Phase Three
+
+##### All patterns from 0000 to 9999 solved for a single solution and stored in external file
+
+##### User can select to play a game or use the calculator
+
+If user selects game a single random pattern with a known solution is presented to the user 
+
+User may attempt to solve the pattern by inputting valid characters and symbols
+
+Calculate whether their attempt solves the pattern
+
+Print whether their attempt solves the pattern
+
+Offer the chance to play again or use the calculator
+
+
+
+
+
+
 
 
 
@@ -64,35 +114,17 @@ No. It would use the calculator to solve them live when requested by the user
 
 
 
-
-
-
-
-*[*9:13 AM*]*
-
 But if I were to have a full game with difficulty levels, it would require more forethought to avoid users getting unsolvable patterns
 
 
-
-
-
-
-
-*[*9:13 AM*]*
 
 but for this assignment I can probably only do Phase 1
 
 
 
-
-
-
-
-*[*9:14 AM*]*
-
 maybe phase 2
 
-Yeah I would just work to have a calculator algorithm that can make 10 out of user input and return "no known solutions" or something if it can't solve There will be all sorts of errors to avoid with the calculator, such as brackets that aren't closed, nil, strings not integers etc, divid
+Yeah I would just work to have a calculator algorithm that can make 10 out of user input and return "no known solutions" or something if it can't solve There will be all sorts of errors to avoid with the calculator, such as brackets that aren't closed, nil, strings not integers etc, dividing by zero
 
 
 
