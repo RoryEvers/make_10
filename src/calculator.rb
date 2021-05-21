@@ -1,15 +1,17 @@
 class Calculator
     def initialize(goal, operations, numbers)
+        
     end
 end
 
 class Operations
 
+
     def add(num1, num2)
         num1 + num2
     end
 
-    def sub(num1, num2)
+    def subt(num1, num2)
         num1 - num2
     end
 
@@ -23,6 +25,14 @@ class Operations
 
     def exp(num1, num2)
         num1 ** num2
+    end
+
+    def allopp(num1, num2)
+        add(num1, num2)
+        subt(num1, num2)
+        mult(num1, num2)
+        div(num1, num2)
+        exp(num1, num2)
     end
 
 
@@ -50,32 +60,32 @@ end
 #      Hash[:sum, Calculator.add(num1, num2), :difference, Calculator.subtract(num1, num2)]
 # end
 
-def multiply_all(values)
-    # your code here
-    include Calculator
+# def multiply_all(values)
+#     # your code here
+#     include Calculator
     
-    # Get the array
-    # pull out first 2 numbers, multiply them (use Calculator.multiply)
-    # assign them to a 'running total' variable
-    # go back to the array and grab the third number, repeat so on so forth, keep adding to running total
+#     # Get the array
+#     # pull out first 2 numbers, multiply them (use Calculator.multiply)
+#     # assign them to a 'running total' variable
+#     # go back to the array and grab the third number, repeat so on so forth, keep adding to running total
 
 
-    # running_total = multiply(values[0], values[1])
-    running_total = 1
+#     # running_total = multiply(values[0], values[1])
+#     running_total = 1
     
-    length = values.length
+#     length = values.length
 
-    index_pos = 0
+#     index_pos = 0
 
-    while index_pos <= (length - 1)
-        running_total = multiply(values[index_pos], running_total)
-        index_pos += 1
-    end
+#     while index_pos <= (length - 1)
+#         running_total = multiply(values[index_pos], running_total)
+#         index_pos += 1
+#     end
 
-    puts running_total
-    running_total
+#     puts running_total
+#     running_total
 
-end
+# end
 
-sum_and_difference(5, 4)
-multiply_all([1,2,3,4])
+# sum_and_difference(5, 4)
+# multiply_all([1,2,3,4])
