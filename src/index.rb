@@ -2,34 +2,12 @@ require_relative "calculator.rb"
 
 op = Operations.new
 
-# bla bla input
-# we have 4 numbers
-# (send to a class that works out all combinations of numbers) - output (a)(b)(c)(d), (a o b) o c o d
-# a o b o (c o d)
-
-# goal 10
-# input : 1,2,3,4
-# options do you want to play
-#     input 4 numbersd
-#     do you want to play again
 
 
-# Classes ideas:
-#  Make 10 - welcome message, instructions, (will call for input), will call for calculator
-#  Input - 
-#  calculator 
-# operations [+, -, *, **, /]
 
-# 4 variables
-# a = 1
-# b = 2
-# c = 3
-# d = 4
 
-# (a)o(b)o(c)o(d) - 1,1,1,1 also a can be + or - 
-# (a)o(boc)(o)(d)  - 1 and 2 and 1, some reduncacny because boc only necessary to check for some operations and not all
-# (a)o(b)o(cod) - 1 and 1 and 2
-# (aob)o(c)o(d) - 
+
+
 
 a = 1.0
 b = 2.0
@@ -38,16 +16,7 @@ d = 4.0
 
 
 
-# puts "#{a} #{opps_ab[o1_index]} #{b} #{opps_fc[o2_index]} #{c} #{opps_sd[o3_index]} #{d}"
-# total = a operations[o1_index] b operations[o1_index] c operations[o1_index] doperations
-# total = (pn)(a)(o1)(b)(o2)(c)(o3)(d)
-# total = (a)(o1)(b)(o2)(c)(o3)(d)
-# pn = "+"
 
-# solutions = []
-# example solution = [[1, +, 2, +, 3, +, 4]]
-# for each 
-# ends up looking like 1 + 2 + 3 + 4 = 10
 
 
 # for more advanced, start at different levels of loop 
