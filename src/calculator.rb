@@ -28,17 +28,21 @@ class Operations
     end
 
     def allopp(num1, num2)
-        add(num1, num2)
-        subt(num1, num2)
-        mult(num1, num2)
-        div(num1, num2)
-        exp(num1, num2)
+        ad = add(num1, num2)
+        s = subt(num1, num2)
+        m = mult(num1, num2)
+        d = div(num1, num2)
+        ex = exp(num1, num2)
+        all = [ad, s, m, d, ex]
+        # return ad, s, m, d, ex
+        # return all
     end
 
 
 end
 
-
+# test1 = Operations.new
+# puts test1.allopp(2.0,4.0)
 
 
 

@@ -4,9 +4,8 @@ require_relative "openingmessages.rb"
 welcome = Welcome.new
 
 welcome.welcome_message
-# welcome.instructions
 welcome.ask_user_start
-# here is where I ask the user 
+
 
 
 

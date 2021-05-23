@@ -1,4 +1,10 @@
 require_relative "calculator.rb"
+require_relative "openingmessages.rb"
+
+welcome = Welcome.new
+
+welcome.welcome_message
+welcome.ask_user_start
 
 op = Operations.new
 
@@ -30,11 +36,17 @@ op = Operations.new
 # (a)o(boc)(o)(d)  - 1 and 2 and 1, some reduncacny because boc only necessary to check for some operations and not all
 # (a)o(b)o(cod) - 1 and 1 and 2
 # (aob)o(c)o(d) - 
+# testvar = variables.new
 
-a = 1.0
-b = 2.0
-c = 2.0
-d = 4.0
+a = $digits[0]
+b = $digits[1]
+c = $digits[2]
+d = $digits[3]
+
+# a = testvar[0]
+# b = testvar[1]
+# c = testvar[2]
+# d = testvar[3]
 
 
 
@@ -50,16 +62,8 @@ d = 4.0
 # ends up looking like 1 + 2 + 3 + 4 = 10
 
 
-# for more advanced, start at different levels of loop 
-play_status = "yes"
-# while the player has selected they want to play
-# while play_status == "yes"
-    # puts "calculating now"
-# take 4 digits and assign to 4 variables
-#  try solutions 
+
 total = 0
-# total = (a)(o1)(b)(o2)(c)(o3)(d)
-# array of operations with 
 first2 = 0.00
 second2 = 0.00
 

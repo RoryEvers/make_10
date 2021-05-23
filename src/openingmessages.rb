@@ -1,5 +1,7 @@
 require "tty-prompt"
 
+$digits = []
+
 class Welcome < TTY::Prompt
     @@prompt = TTY::Prompt.new
     def welcome_message
@@ -27,11 +29,8 @@ class Welcome < TTY::Prompt
          
         answer = @@prompt.select("What would you like to do?", %w(calculator instructions quit))
         if answer == "calculator"
-            puts "\e[H\e[2J"
-            puts "Input four single digit numbers separated by a space e.g. 1 2 3 4"
-            variables = gets.chomp
-            puts variables
-            # play_status = true
+            ask_for_digits
+           
         elsif answer == "instructions"
             puts "\e[H\e[2J"
             instructions
@@ -41,6 +40,25 @@ class Welcome < TTY::Prompt
             # play_status = false
         end
     end
+
+    def ask_for_digits
+        puts "\e[H\e[2J"
+        # variables = []
+        puts "Input four single digit numbers separated by a space e.g. 1 2 3 4"
+        # input = gets.chomp.to_f
+        variables = gets.split(/[\s]/)
+        variables_floats = object_to_float(variables)
+        $digits += object_to_float(variables)
+        # $digits += variables_floats
+        # puts $digits
+        # puts variables_floats
+        # test1 = Operations.new
+        # puts test1.allopp(variables_floats[0], variables_floats[1])
+    end
+
+    def object_to_float(array)
+        array.map(&:to_f)
+end
 
 end
 
