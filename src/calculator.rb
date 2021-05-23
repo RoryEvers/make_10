@@ -27,6 +27,18 @@ class Operations
         num1 ** num2
     end
 
+
+    # def allopp(num1, num2)
+    #     add(num1, num2)
+    #     subt(num1, num2)
+    #     mult(num1, num2)
+    #     div(num1, num2)
+    #     exp(num1, num2)
+        
+    #     # return ad, s, m, d, ex
+    #     # return all
+    # end
+
     def allopp(num1, num2)
         ad = add(num1, num2)
         s = subt(num1, num2)
@@ -35,7 +47,7 @@ class Operations
         ex = exp(num1, num2)
         all = [ad, s, m, d, ex]
         # return ad, s, m, d, ex
-        # return all
+        return all
     end
 
 

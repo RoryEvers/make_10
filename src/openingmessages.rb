@@ -42,18 +42,18 @@ class Welcome < TTY::Prompt
     end
 
     def ask_for_digits
-        puts "\e[H\e[2J"
-        # variables = []
+        # puts "\e[H\e[2J"
+        system("clear")
         puts "Input four single digit numbers separated by a space e.g. 1 2 3 4"
-        # input = gets.chomp.to_f
         variables = gets.split(/[\s]/)
-        variables_floats = object_to_float(variables)
+        # need to ensure there are 4 numbers, each between 0 and 9
+
         $digits += object_to_float(variables)
-        # $digits += variables_floats
+       
         # puts $digits
-        # puts variables_floats
+        
         # test1 = Operations.new
-        # puts test1.allopp(variables_floats[0], variables_floats[1])
+        # puts test1.allopp($digits[0], $digits[1])
     end
 
     def object_to_float(array)

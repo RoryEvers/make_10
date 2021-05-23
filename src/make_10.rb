@@ -71,6 +71,8 @@ opps_ab = [op.add(a,b), op.subt(a,b), op.div(a,b), op.mult(a,b), op.exp(a,b)]
 opps_fc = [op.add(first2, c), op.subt(first2, c), op.div(first2, c), op.mult(first2, c), op.exp(first2, c)]
 opps_sd = [op.add(second2,d), op.subt(second2,d), op.div(second2,d), op.mult(second2,d), op.exp(second2,d)]
 
+# arrayofoperations = [op.add(total, num1), op.subt(total, num1), op.div(total, num1), op.mult(total, num1), op.exp(total, num1)]
+
 # [{+: op.add(a,b)}]
 
 
@@ -78,35 +80,38 @@ ab_index = 0
 fc_index = 0
 sd_index = 0
 
+printarray = ["+", "-", "/", "*", "**"]
 
-if total != 10
-# call loops with array of numbers and 
-    # puts "total not 10 yet"
-    while ab_index < 5.0
+
+while ab_index < 5
 
         first2 = opps_ab[ab_index]
         fc_index = 0
+
             while fc_index < 5
                 opps_fc = [op.add(first2, c), op.subt(first2, c), op.div(first2, c), op.mult(first2, c), op.exp(first2, c)]
                 second2 = opps_fc[fc_index]
                 sd_index = 0
+
                     while sd_index < 5
                         opps_sd = [op.add(second2,d), op.subt(second2,d), op.div(second2,d), op.mult(second2,d), op.exp(second2,d)]
                         total = opps_sd[sd_index]
-                        sd_index += 1
+                        # sd_index += 1
                         if total == 10
-                        puts "#{a.to_i} a#{ab_index.to_i} #{b.to_i} b#{fc_index.to_i} #{c.to_i} c#{sd_index.to_i} #{d.to_i} = 10"
+                        # puts "#{a.to_i} a#{ab_index.to_i} #{b.to_i} b#{fc_index.to_i} #{c.to_i} c#{sd_index.to_i} #{d.to_i} = 10"
+                        puts "#{a.to_i} #{printarray[ab_index]} #{b.to_i} #{printarray[fc_index]} #{c.to_i} #{printarray[sd_index]} #{d.to_i} = 10"
+
                         end
+                        sd_index += 1
                     end
-
                 fc_index += 1  
-                # puts "#{first2}, #{second2}" 
-            end
-           
-            
-
+                end
         ab_index +=1
     end
+
+    welcome.ask_user_start
+
+
 
 
     # while ab_index > 4
@@ -128,10 +133,10 @@ if total != 10
 #         o1_index += 1
 #         o2_index = 0
 #     end
-elsif total == 10
-    puts "found solution"
-#     play_status = "no"
-end
+# elsif total == 10
+#     puts "found solution"
+# #     play_status = "no"
+# end
 # # print the array 
 
 # if no solutions found print "no solutions found"
