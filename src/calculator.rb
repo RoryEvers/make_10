@@ -28,24 +28,14 @@ class Operations
     end
 
 
-    # def allopp(num1, num2)
-    #     add(num1, num2)
-    #     subt(num1, num2)
-    #     mult(num1, num2)
-    #     div(num1, num2)
-    #     exp(num1, num2)
-        
-    #     # return ad, s, m, d, ex
-    #     # return all
-    # end
 
     def allopp(num1, num2)
-        ad = add(num1, num2)
+        ad = add(num1, num2) #calc count = 0
         s = subt(num1, num2)
-        m = mult(num1, num2)
         d = div(num1, num2)
+        m = mult(num1, num2)
         ex = exp(num1, num2)
-        all = [ad, s, m, d, ex]
+        all = [ad, s, d, m, ex]
         # return ad, s, m, d, ex
         return all
     end
