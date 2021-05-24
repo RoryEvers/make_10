@@ -11,7 +11,7 @@ class Operations
         num1 + num2
     end
 
-    def subt(num1, num2)
+    def subt(num1, num2)   
         num1 - num2
     end
 
@@ -49,6 +49,17 @@ class Operations
         # return ad, s, m, d, ex
         return all
     end
+
+    # def insane(num1, num2)
+    #     ad = add(num1, num2)
+    #     s = subt(num1, num2)
+    #     m = mult(num1, num2)
+    #     d = div(num1, num2)
+    #     ex = exp(num1, num2)
+    #     all = [ad, s, m, d, ex]
+    #     # return ad, s, m, d, ex
+    #     return all
+    # end
 
 
 end

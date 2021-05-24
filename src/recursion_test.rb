@@ -26,69 +26,121 @@ require_relative "calculator.rb"
 # the loop should call itself for all subsequent operations
 
 
+# def test1(run_total, index)
+#     @op.allopp(run_total, digits[index + 1])
 
-
-
-
-def recursion_test(digits, run_total, index)
-# puts "run_total before if #{run_total}"
-    if @index > 3 
-        puts "finished calculating"
-    else
-        arrayofresults = @op.allopp(run_total, digits[@index])
-        newtotals = arrayofresults.map { |n| n + run_total }
-        # puts newtotals
-        @index += 1
-        # for newtotals.each do |e|
-            # test1 = (&:recursion_test(digits, e, @index))
-            # puts test1
-        # end
-    end
-        # puts test1     
-end
-
-
-        # temparray = @arrayofoperations
-
-        # temparray[index]
-        # puts "run_total after temp array #{run_total}"
-        # puts temparray
-        
-        # for each e, create new tree, add run total to e, increase index by 1
-        # temparray.each do |e|
-        # e += run_total
-        # puts "run_total each e #{run_total}"
-        # @index += 1
-        # recursion_test(digits, e, @index)
-        #  puts e
-        #  puts temparray[index]
-        # end
-    
-            # run_total += e
-        #     if @index > 3 && run_total == 10
-        #         puts "Found solution"
-        #     elsif @index > 3 && run_total != 10
-        #         puts "No solutions found"
-        #     else @index < 4 
-        #         recursion_test(digits, run_total, (@index+1))
-        #     # recursion_test(digits, run_total, @index)
-        #     end
-        #     end
-        
-    
-    
 
 # end
+# index = -1
+# run_total =0
 
-@index = 0
+# def recursion_test(digits, run_total, index)
+# # puts "run_total before if #{run_total}"
+#     if @index > 3 
+#         puts "finished calculating"
+#     else
+#         arrayofresults = @op.allopp(run_total, digits[@index])
+#         newtotals = arrayofresults.map { |n| n + run_total }
+#         # puts newtotals
+
+#     for newtotals.each do |x|
+#         nexttotals = @op.allop(x, digits@[index+1])
+#     end
+#     puts nexttotals
+
+        
+
+
+#         # def allopp(num1, num2)
+#         #     ad = add(num1, num2)
+#         #     s = subt(num1, num2)
+#         #     m = mult(num1, num2)
+#         #     d = div(num1, num2)
+#         #     ex = exp(num1, num2)
+#         #     all = [ad, s, m, d, ex]
+#         #     # return ad, s, m, d, ex
+#         #     return all
+#         # end
+
+
+
+
+#         # @index += 1
+#         # test1 = newtotals[0]
+#         # test2 = newtotals[1]
+#         # test3 = newtotals[2]
+#         # test4 = newtotals[3]
+#         # test5 = newtotals[4]
+#         # puts test5
+#         # @op.allopp(run_total, digits[@index])
+#         # for newtotals.each do |e|
+#             # test1 = (&:recursion_test(digits, e, @index))
+#             # puts test1
+#         # end
+#     end
+#         # puts test1     
+# end
+
+
+# @index = 0
 digits = [1.0,2.0,3.0,4.0]
 # puts digits.map { |n| n * 2 }
 # puts digits
-run_total = 0
+# run_total = 0
+# @index = 0
+
+
+def calculate(run_total, index, digits, returnString)
+    # puts returnString.join(" ")
+    printArray = ["+", "-", "/", "*", "**"]
+    
+    newString = returnString
+     currentIndex = index
+         if currentIndex < 3
+             calculationCount = 0
+             array = @op.allopp(run_total, digits[(currentIndex+1)])
+             newString.push(digits[(currentIndex+1)])
+
+             array.each do |x|
+             newString.push(printArray[calculationCount])
+             calculationCount += 1
+             calculate(x, (currentIndex+1), digits, newString)
+             end
+         else
+             newArray = @op.allopp(run_total, digits[3])
+             newArray.each do |x|
+             check(x, newString)
+             returnString = []
+         end
+     end
+ end
+
+# printarray = ["+", "-", "/", "*", "**"]
+
+# puts a
+# b = digits[1]
+# c = digits[2]
+# d = digits[3]
+
+def check(result, newString)
+    
+    if result == 10
+        # puts "calculation completed #{printarray[0]}}"
+        puts newString.join(' ') + "= 10"
+        returnString = []
+    else
+        returnString = []
+    end
+end
+
+calculate(0, -1, digits, [])
+
+# test1(0, -1)
+# puts test1
 # @arrayofoperations = [@op.add(run_total, digits[@index]), @op.subt(run_total, digits[@index]), @op.div(run_total, digits[@index]), @op.mult(run_total, digits[@index]), @op.exp(run_total, digits[@index])]
 
 
-recursion_test(digits, run_total, @index)
+# recursion_test(digits, run_total, @index)
 
 
 
@@ -137,7 +189,7 @@ recursion_test(digits, run_total, @index)
 # test_loop
 
 
-    def loops_call(thisloopindex, running_total, digits)
+    # def loops_call(thisloopindex, running_total, digits)
         # needs to have this loop index defined on the outside
         # needs to be given total of previous operations (starting with 0)
         # each loop needs to be 
@@ -145,29 +197,29 @@ recursion_test(digits, run_total, @index)
         # will need an array of variables (abcd) to select from
         # array of variables will need an index number
 
-        dig_index = 0
-        running_total = 0
+    #     dig_index = 0
+    #     running_total = 0
 
-        thisloopindex = 0
-        while thisloopindex < 5 
+    #     thisloopindex = 0
+    #     while thisloopindex < 5 
             
             
-            num1 = digits[dig_index]
-            num2 = digits[(dig_index + 1)]
-            total += arrayofoperations[num1, num2]
-            # total = arrayofoperations[thisloopindex]
+    #         num1 = digits[dig_index]
+    #         num2 = digits[(dig_index + 1)]
+    #         total += arrayofoperations[num1, num2]
+    #         # total = arrayofoperations[thisloopindex]
 
-            thepreviousnumber_andthisnumber_currenttotal = arrayofoperations[thisloopindex]
-            lowerlevelloopindex = 0
-            loops_call(lowerlevelloopindex)
-            # if digits remaining doesnt equal 0, then call for a new loop within here
-            # digits -= 1
-            # call_loop(digits)
-            # if total = 10 then now is the time to print etc
-            thisloopindex += 1  
-        end
+    #         thepreviousnumber_andthisnumber_currenttotal = arrayofoperations[thisloopindex]
+    #         lowerlevelloopindex = 0
+    #         loops_call(lowerlevelloopindex)
+    #         # if digits remaining doesnt equal 0, then call for a new loop within here
+    #         # digits -= 1
+    #         # call_loop(digits)
+    #         # if total = 10 then now is the time to print etc
+    #         thisloopindex += 1  
+    #     end
         
-    end
+    # end
     
 
 # loops_call(thisloopindex, total, digits)
