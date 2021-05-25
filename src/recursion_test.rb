@@ -25,45 +25,18 @@ require_relative "calculator.rb"
 # partial solutions could be saved in a cache
 # the loop should call itself for all subsequent operations
 
-
+  
 @printArray = ["+", "-", "/", "*", "**"]
 
-# def calculate(run_total, index, digits, returnString)
-    
-#     currentIndex = index
-
-#         if currentIndex < 3
-#             array = @op.allopp(run_total, digits[(currentIndex+1)])
-#             array.each_with_index do |x, i|
-#                 newerString = returnString.dup
-#                 symb = (@printArray[i].to_s)
-#                 newerString.push(symb)   
-#                 newerString.push((digits[(currentIndex+1)]).to_i)
-#                 calculate(x, (currentIndex+1), digits, newerString)
-#             end
-#         else
-#              check(run_total, returnString)
-
-#      end
-#  end
-
-# def check(result, newString)
-
-#     if result == 10
-#         newString.shift()
-#         puts newString.join(' ') + " = #{result}"
-        
-#     else
-#     end
-# end
 
 def calculate(run_total, index, digits, returnString)
-    
+   
     # Until final digit
     if index < 3
-        # Call allopps to calculate all possibile totals using variables running total (Starting 0) and current digit (indx starts at -1 to enable to then start at 0 while also using a +1 on each loop)
+        # Call allopps to calculate all possibile totals using the variables running total (Starting 0) and current digit (index starts at -1 to enable to then start at 0 while also using a +1 on each loop)
         array = @op.allopp(run_total, digits[(index+1)])
         array.each_with_index do |x, i|
+            # create a new string 
         newerString = returnString.dup
         symb = (@printArray[i].to_s)
         newerString.push(symb)   
@@ -80,8 +53,9 @@ def check(result, newString)
 
     if result == 10
         newString.shift()
-        puts newString.join(' ') + " = #{result}"
+        puts newString.join(' ') + " = #{result.to_i}"
         
     else
     end
 end
+

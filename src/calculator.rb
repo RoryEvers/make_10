@@ -1,11 +1,10 @@
-class Calculator
-    def initialize(goal, operations, numbers)
+# class Calculator
+#     def initialize(goal, operations, numbers)
         
-    end
-end
+#     end
+# end
 
 class Operations
-
 
     def add(num1, num2)
         num1 + num2
@@ -28,7 +27,6 @@ class Operations
     end
 
 
-
     def allopp(num1, num2)
         ad = add(num1, num2) #calc count = 0
         s = subt(num1, num2)
@@ -39,73 +37,39 @@ class Operations
         # return ad, s, m, d, ex
         return all
     end
-
-    # def insane(num1, num2)
-    #     ad = add(num1, num2)
-    #     s = subt(num1, num2)
-    #     m = mult(num1, num2)
-    #     d = div(num1, num2)
-    #     ex = exp(num1, num2)
-    #     all = [ad, s, m, d, ex]
-    #     # return ad, s, m, d, ex
-    #     return all
-    # end
-
-
 end
 
-# test1 = Operations.new
-# puts test1.allopp(2.0,4.0)
 
+# class Calculator 
 
-
-
-
-
-
-
-# def sum_and_difference(num1,num2)
-#     # your code here
-#     include Calculator
-#     add_subtract = {}
-#     add_subtract[:sum] = add(num1, num2)
-#     add_subtract[:difference] = subtract(num1, num2)
-#     puts add_subtract
-#     add_subtract
-# end
-
-# def sum_and_difference(num1,num2)
-#     # your code here
-#     include Calculator
-#      Hash[:sum, Calculator.add(num1, num2), :difference, Calculator.subtract(num1, num2)]
-# end
-
-# def multiply_all(values)
-#     # your code here
-#     include Calculator
+#     @printArray = ["+", "-", "/", "*", "**"]
+# def calculate(run_total, index, digits, returnString)
     
-#     # Get the array
-#     # pull out first 2 numbers, multiply them (use Calculator.multiply)
-#     # assign them to a 'running total' variable
-#     # go back to the array and grab the third number, repeat so on so forth, keep adding to running total
+#     # Until final digit
+#     if index < 3
+#         # Call allopps to calculate all possibile totals using the variables running total (Starting 0) and current digit (index starts at -1 to enable to then start at 0 while also using a +1 on each loop)
+#         array = @op.allopp(run_total, digits[(index+1)])
+#         array.each_with_index do |x, i|
+#             # create a new string 
+#         newerString = returnString.dup
+#         symb = (@printArray[i].to_s)
+#         newerString.push(symb)   
+#         newerString.push((digits[(index+1)]).to_i)
+#         calculate(x, (index+1), digits, newerString)
+#         end
+#         else
+#             check(run_total, returnString)
 
+#      end
+#  end
 
-#     # running_total = multiply(values[0], values[1])
-#     running_total = 1
-    
-#     length = values.length
+# def check(result, newString)
 
-#     index_pos = 0
-
-#     while index_pos <= (length - 1)
-#         running_total = multiply(values[index_pos], running_total)
-#         index_pos += 1
+#     if result == 10
+#         newString.shift()
+#         puts newString.join(' ') + " = #{result.to_i}"
+        
+#     else
 #     end
-
-#     puts running_total
-#     running_total
-
 # end
-
-# sum_and_difference(5, 4)
-# multiply_all([1,2,3,4])
+# end
