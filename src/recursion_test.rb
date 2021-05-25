@@ -36,16 +36,20 @@ def calculate(run_total, index, digits, returnString)
         # Call allopps to calculate all possibile totals using the variables running total (Starting 0) and current digit (index starts at -1 to enable to then start at 0 while also using a +1 on each loop)
         array = @op.allopp(run_total, digits[(index+1)])
         array.each_with_index do |x, i|
-            # create a new string 
-        newerString = returnString.dup
-        symb = (@printArray[i].to_s)
-        newerString.push(symb)   
-        newerString.push((digits[(index+1)]).to_i)
-        calculate(x, (index+1), digits, newerString)
+            # create a new array to store 
+            newerString = returnString.dup
+            # create a variable to store the operation that took place
+            symb = (@printArray[i].to_s)
+            # push the symbol 
+            newerString.push(symb)   
+            # push the digit
+            newerString.push((digits[(index+1)]).to_i)
+            # call this method again, with running total now element x from last time, and index is 1 higher than last time
+            calculate(x, (index+1), digits, newerString)
         end
         else
+            # Once final digit, send to check if running total = 10
             check(run_total, returnString)
-
      end
  end
 

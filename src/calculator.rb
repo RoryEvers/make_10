@@ -37,6 +37,10 @@ class Operations
         # return ad, s, m, d, ex
         return all
     end
+
+
+
+    
 end
 
 
