@@ -35,6 +35,7 @@ def calculate(run_total, index, digits, returnString)
     if index < 3
         # Call allopps to calculate all possibile totals using the variables running total (Starting 0) and current digit (index starts at -1 to enable to then start at 0 while also using a +1 on each loop)
         array = @op.allopp(run_total, digits[(index+1)])
+        # if index = -1 array.each_with_index 
         array.each_with_index do |x, i|
             # create a new array to store 
             newerString = returnString.dup
@@ -49,17 +50,21 @@ def calculate(run_total, index, digits, returnString)
         end
         else
             # Once final digit, send to check if running total = 10
-            check(run_total, returnString)
+            check(run_total, returnString, digits)
      end
  end
 
-def check(result, newString)
+def check(result, newString, digits)
 
     if result == 10
-        newString.shift()
+        # newString.shift()
+        newString.unshift(digits[0])
         puts newString.join(' ') + " = #{result.to_i}"
         
     else
     end
 end
 
+# op = Operations.new
+test1 = [5, 5 ,5 ,5]
+calculate(test1[0], 0, test1, [])

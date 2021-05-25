@@ -3,29 +3,27 @@ require_relative "openingmessages.rb"
 require_relative "recursion_test.rb"
 
 
+require "colorize"
 require "tty-prompt"
+require "artii"
 
-$digits = []
+# $digits = []
 # @op = Operations.new
 
 class Welcome < TTY::Prompt
     @@prompt = TTY::Prompt.new
     def welcome_message
         system("clear")
-        puts "
-        ███╗   ███╗ █████╗ ██╗  ██╗███████╗     ██╗ ██████╗ 
-        ████╗ ████║██╔══██╗██║ ██╔╝██╔════╝    ███║██╔═████╗
-        ██╔████╔██║███████║█████╔╝ █████╗      ╚██║██║██╔██║
-        ██║╚██╔╝██║██╔══██║██╔═██╗ ██╔══╝       ██║████╔╝██║
-        ██║ ╚═╝ ██║██║  ██║██║  ██╗███████╗     ██║╚██████╔╝
-        ╚═╝     ╚═╝╚═╝  ╚═╝╚═╝  ╚═╝╚══════╝     ╚═╝ ╚═════╝ 
-                                                          "
+        a = Artii::Base.new :font => 'slant'
+        puts a.asciify('Make 10').colorize(:white).on_green
+        
 
-        puts "This app can find solutions for the game Make 10."
+        puts ("This app can find solutions for the game Make 10.")
     end 
 
     def instructions
         system("clear")
+        puts ("Instructions").colorize(:white).on_green
         puts "How the game works:"
         puts "Make 10 is played by taking four numbers, and combining different mathematical operations to solve for a total of 10."
         puts " "
@@ -39,6 +37,7 @@ class Welcome < TTY::Prompt
         puts " "
     end
 
+    # Give the user three options using 
     def ask_user_start
         answer = @@prompt.select("What would you like to do?", %w(calculator instructions quit))
         if answer == "calculator"
@@ -58,7 +57,13 @@ class Welcome < TTY::Prompt
         puts "Input four single digit numbers separated by a space e.g. 1 2 3 4"
         variables = gets.split(/[\s]/)
         # @@variables = variables
-        $digits += object_to_float(variables)
+        digits = []
+        digits += object_to_float(variables)
+        # puts digits
+        op = Operations.new
+        # test1 = [1, 2 ,3 ,4]
+        op.calculate(digits[0], 0, digits, [])
+        ask_user_start
     end
 
 
@@ -68,5 +73,6 @@ class Welcome < TTY::Prompt
 
 end
 
-
+# test5 = Welcome.new
+# test5.ask_for_digits
 
