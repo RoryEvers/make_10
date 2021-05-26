@@ -2,7 +2,11 @@
 
 ## Referenced Sources
 
+http://rubyquiz.com/quiz7.html
+
 ## Source Control Repository
+
+
 
 ## Software Development Plan
 
@@ -174,10 +178,58 @@ There are likely to be errors resulting from users including numbers and symbols
 Develop a diagram which describes the control flow of your application. Your diagram must:
 - show the workflow/logic and/or integration of the features in your application for each feature.
 - utilise a recognised format or set of conventions for a control flow diagram, such as UML.
+- 
 
 ### Implementation
 
-Develop an implementation plan which:
+Building the terminal application according to the software development plan requires creating modular code, utilising test driven development, and creating minimum viable products for each feature. Adding gems should be done at appropriate times to improve functionality, reduce errors and enhance the appearance of the application. 
+
+#### Test Driven Development
+
+Features such as the Welcome Message and Instructions can have tests written prior to building. They display simple text. Testing is recorded in a separate spreadsheet. The calculator operates using methods for each operation (detailed below), and these can be tested easily as well. 
+
+#### Calculator methods
+
+All versions of the calculator utilise the same basic methods of addition, subtraction, multiplication, division and exponentiation and these are created within an Operations class. These methods are combined together into a new method, which allows the calculator to call all operations simultaneously. 
+
+#### Welcome
+
+The Welcome message displays ASCII art (implemented with Artii, see below) and a short message explaining the program, before the prompt 
+
+#### Main Menu
+
+
+
+#### Instructions
+
+#### Gem: TTY Prompt
+
+#### Calculator Version 1
+
+#### Calculator Version 2
+
+#### Gem: Artii
+
+#### Gem: Terminal Table
+
+#### Gem: Colorize
+
+#### Error Handling
+
+Error handling was considered throughout the planning and development phase. There are two main areas where there was a risk of error: user input and calculation. The most graceful solutions tended to be the ones that avoided the possibility of errors entirely in the design phase, but sometimes great lengths were gone to in order to ensure a fully functional application.
+
+The user is capable of making an input on the menu to choose what feature they want to use, and they are also required to input numbers to be calculated. Their ability to choose was limited to valid inputs using TTY Prompt, which was implemented widely across the application. For menus, they have three options which can be selected using the arrow keys and enter, and this menu is displayed again after viewing the instructions or using the calculator. 
+
+Handling potential errors for inputting numbers required much more consideration, as hardcoding options in the same way as was done for the menu would make for a poor user experience. Instead, TTY Prompt was used to limit input to valid characters, a single number between 1000 and 9999, and to make sure that the user could input only numbers and not letters or symbols. As the user input would be a string, TTY Prompt was used to convert this number to an integer. Next followed a sequence of coded conditional statements to obtain input in a usable format. To ensure that the input was not a negative number, a manual rescue was created to inform the user that only positive numbers were valid, and this occurs around the method for splitting the single number into individual digits.  Next, conditionals were used to ensure the length of the resulting input was exactly four digits.  Once there are exactly four positive integers, they can be converted into floats to ensure accurate calculation where decimals are often essential for correct solutions. These floats are converted back into integers when it comes time to print solutions. 
+
+Each operation used for calculation was tested manually and using RSPEC. The design of the main calculator made it unnecessary to go to efforts to avoid division by zero, as for occasions where division by zero occurs, it naturally cannot result in a solution that equals 10 and the loop continues on down paths where no division by zero occurred. 
+
+#### Command line 
+
+ruby openingmessages.rb calculator
+
+## Develop an implementation plan which:
+
 - outlines how each feature will be implemented and a checklist of tasks for each feature
 - prioritise the implementation of different features, or checklist items within a feature
 - provide a deadline, duration or other time indicator for each feature or checklist/checklist-item
@@ -188,10 +240,41 @@ Utilise a suitable project management platform to track this implementation plan
 
 ### Help Documentation
 
-Design help documentation which includes a set of instructions which accurately describe how to use and install the application.
+Your computer must have Ruby installed. Follow the instructions here to [download and install](https://www.ruby-lang.org/en/documentation/installation/). 
 
-You must include:
-- steps to install the application
-- any dependencies required by the application to operate
-- any system/hardware requirements
+Next open the "src" folder, where you can view all the files necessary for this application to run without error.
+
+This application makes use of several gems to enhance functionality and appearance, and will require you to install bundler first which can then be used to install the other gems. Run the following two commands in terminal:
+
+```
+gem install bundler
+```
+
+```
+bundle install 
+```
+
+
+
+Once you have the gems, it is time to calculate! 
+
+Ensure you are in the "src" folder, and then open the application using terminal by inputting:
+
+```
+ruby index.rb
+```
+
+It is also possible to go straight to the calculator and avoid the welcome screen using:
+
+```
+ruby menu.rb calculator
+```
+
+Or to go straight to the instructions page using 
+
+```
+ruby menu.rb instructions
+```
+
+
 

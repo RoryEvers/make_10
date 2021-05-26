@@ -1,6 +1,5 @@
 require_relative "calculator.rb"
-require_relative "openingmessages.rb"
-# require_relative "recursion_test.rb"
+require_relative "menu.rb"
 
 welcome = Welcome.new
 welcome.welcome_message

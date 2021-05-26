@@ -1,20 +1,17 @@
 require_relative "calculator.rb"
-require_relative "openingmessages.rb"
-# require_relative "recursion_test.rb"
+require_relative "menu.rb"
 
 require "colorize"
 require "tty-prompt"
-# require "artii"
+require "artii"
 
 
 class Welcome < TTY::Prompt
     @@prompt = TTY::Prompt.new
     def welcome_message
         system("clear")
-        # a = Artii::Base.new :font => 'slant'
-        # puts a.asciify('Make 10').colorize(:white).on_green
-        
-
+        a = Artii::Base.new :font => 'slant'
+        puts a.asciify('Make 10').colorize(:white).on_green
         puts ("This app can find solutions for the game Make 10.")
     end 
 
@@ -32,9 +29,10 @@ class Welcome < TTY::Prompt
         puts "`1234` can be solved as `1+2+3+4 = 10` and also `(1 * 2 * 3) + 4 = 10`"
         puts "But you cannot solve it as `4+3+2+1 = 10`"
         puts " "
+        ask_user_start
     end
 
-    # Give the user three options using 
+    # Give the user three options using TTY Prompt to avoid errors
     def ask_user_start
         quit_status = false
         until quit_status != false
@@ -45,7 +43,6 @@ class Welcome < TTY::Prompt
                 elsif answer == "instructions"
                     system("clear")
                     instructions
-                    ask_user_start
                 else answer == "quit"
                     puts "Stay well. Come back next time you are stuck on a number!"
                     quit_status = true
@@ -72,33 +69,28 @@ class Welcome < TTY::Prompt
             puts "Positive numbers only!"
             ask_for_digits
         end  
+        
 
-        # 
         if variables.length == 4
-            variables.each do |x|
-                if x.to_i >= 0 && x.to_i <= 9 #&& x.to_i == Integer
-                    numbers = []
-                    numbers += object_to_float(variables)
-                    op = Operations.new
-                    op.calculate(numbers[0], 0, numbers, [])
-                    ask_user_start
-                else 
-                    puts "Invalid input"
-                    ask_for_digits
-                end
-                end
+            numbers = []
+            numbers += object_to_float(variables)
+            op = Operations.new
+            op.calculate(numbers[0], 0, numbers, [])
+            ask_user_start
+              
         else
+            system("clear")
             puts "Invalid input"
             ask_for_digits
         end
         
     end
 
-
     def object_to_float(array)
         array.map(&:to_f)
     end
 
+    # Ability to open straight to instructions and calculator 
     def command_line
         ARGV.each do |arg|
             if arg == "instructions"
@@ -114,6 +106,6 @@ class Welcome < TTY::Prompt
 
 end
 
-test1 = Welcome.new
-test1.command_line
+open_from_command = Welcome.new
+open_from_command.command_line
 

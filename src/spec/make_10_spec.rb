@@ -1,5 +1,5 @@
 require_relative "../calculator"
-require_relative "../openingmessages"
+require_relative "../menu"
 require_relative "../index"
 
 
