@@ -1,9 +1,9 @@
 require "terminal-table"
 require 'colorize'
-# require "colorized_string"
+
 
 class Operations
-    # @@table = Terminal::Table.new
+    
     def add(num1, num2)
         num1 + num2
     end
@@ -38,7 +38,7 @@ class Operations
         print_array = ["+", "-", "/", "*", "**"]
         # Until final digit
         if index < 3
-            # Call allopps to calculate all possibile totals using the variables running total (Starting 0) and current digit (index starts at -1 to enable to then start at 0 while also using a +1 on each loop)
+            # Call allopps to calculate all possibile totals using the variables running total (Starting first digit) and next digit 
             array = allopp(run_total, digits[(index+1)])
             # if index = -1 array.each_with_index 
             array.each_with_index do |x, i|
@@ -60,10 +60,10 @@ class Operations
     end
     
     def check(result, new_string, digits)
-# solution_tally = 0
         if result == 10
-            # solution_tally +=1
+            # add the first digit to string
             new_string.unshift(digits[0].to_i)
+            # send to terminal table rows
             rows = []
             rows << [new_string.join(' '), " = #{result.to_i}"]
             table = Terminal::Table.new :rows => rows

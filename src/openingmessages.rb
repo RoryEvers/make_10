@@ -4,17 +4,15 @@ require_relative "openingmessages.rb"
 
 require "colorize"
 require "tty-prompt"
-require "artii"
+# require "artii"
 
-# $digits = []
-# @op = Operations.new
 
 class Welcome < TTY::Prompt
     @@prompt = TTY::Prompt.new
     def welcome_message
         system("clear")
-        a = Artii::Base.new :font => 'slant'
-        puts a.asciify('Make 10').colorize(:white).on_green
+        # a = Artii::Base.new :font => 'slant'
+        # puts a.asciify('Make 10').colorize(:white).on_green
         
 
         puts ("This app can find solutions for the game Make 10.")
@@ -53,7 +51,7 @@ class Welcome < TTY::Prompt
                     quit_status = true
                     exit
                 end
-    end
+        end
     end
 
     def ask_for_digits
@@ -101,7 +99,21 @@ class Welcome < TTY::Prompt
         array.map(&:to_f)
     end
 
+    def command_line
+        ARGV.each do |arg|
+            if arg == "instructions"
+            instructions
+            elsif arg == "calculator"
+            ask_for_digits
+            else
+            
+            end
+        end
+         
+    end
+
 end
 
-
+test1 = Welcome.new
+test1.command_line
 
