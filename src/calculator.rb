@@ -60,16 +60,17 @@ class Operations
     end
     
     def check(result, new_string, digits)
-
+# solution_tally = 0
         if result == 10
-            # newString.shift()
+            # solution_tally +=1
             new_string.unshift(digits[0].to_i)
-            # puts newString.join(' ') + " = #{result.to_i}"
             rows = []
             rows << [new_string.join(' '), " = #{result.to_i}"]
             table = Terminal::Table.new :rows => rows
             puts table
+            
         else
+            
         end
     end
 end
