@@ -186,7 +186,7 @@ Building the terminal application according to the software development plan req
 
 #### Test Driven Development
 
-Features such as the Welcome Message and Instructions can have tests written prior to building. They display simple text. Testing is recorded in a separate spreadsheet. The calculator operates using methods for each operation (detailed below), and these can be tested easily as well. 
+Features could be tested in the process of building. Many display simple text.  The calculator operates using methods for each operation (detailed below), and these can be tested easily as well. Testing is recorded in a separate spreadsheet (Manual Testing Spreadsheet - Test Cases.pdf ) that has been included in the docs folder. All tests passed or failed when expected to. 
 
 #### Calculator methods
 
@@ -194,11 +194,11 @@ All versions of the calculator utilise the same basic methods of addition, subtr
 
 #### Welcome
 
-The Welcome message displays ASCII art (implemented with Artii, see below) and a short message explaining the program, before the prompt 
+The Welcome message was designed to be brief and functional and was implemented to display ASCII art using the gem Artii (see below) and displays a short message explaining the program, before the menu appears. 
 
 #### Main Menu
 
-
+The main menu provides three options for the user, to use the calculator, to read instructions or to quit the program. Options are controlled using the gem TTY Prompt which was used widely throughout the application to avoid errors and enhance the user experience. 
 
 #### Instructions
 
