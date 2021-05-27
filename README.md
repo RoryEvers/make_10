@@ -105,7 +105,7 @@ The user will be given the option of reading how to use the application immediat
 
 The gem TTY Prompt will be used to limit how users can interact with features. The main menu has strictly three options and users only need to use the arrow and enter keys to make a selection. TTY Prompt is also used when users are called to input numbers, to ensure they do not input invalid characters.
 
-If not for TTY prompt and other solutions such as incorporating functions and conditional statements for error handling there would likely be errors resulting from users including letters, negative numbers numbers and symbols that are not allowed for valid solutions and also input that is the wrong length of characters.  
+If not for TTY prompt and other solutions such as functions and conditional statements for error handling, there would likely be errors resulting from user input including letters, negative numbers and symbols that are not allowed for valid solutions, and also for input that is the wrong length of characters.  
 
 The user flow throughout the application is as follows.
 
@@ -217,11 +217,14 @@ ruby menu.rb instructions
 
 ### Help Documentation
 
-To use this application your computer must have Ruby installed. Follow the instructions here to [download and install](https://www.ruby-lang.org/en/documentation/installation/). 
+To use this application you must have a computer capable of running ruby, and you must have Ruby installed. Follow the instructions here to [download and install](https://www.ruby-lang.org/en/documentation/installation/). 
 
-Open the "src" folder, where you can view all the files necessary for this application to run without error.
+Open the "src" folder contained in the folder where this README is located. This is where you can view all the files necessary for this application to run without error.
 
-This application makes use of several gems to enhance functionality and appearance, and will require you to install bundler first which can then be used to install the other gems. Run the following two commands in terminal:
+This application makes use of several gems to enhance functionality and appearance, and will require you to install bundler first which can then be used to install the other gems. 
+Gem dependencies: artii, colorize (~> 0.8.1), rspec (~> 3.10), terminal-table (~> 3.0, >= 3.0.1), tty-prompt
+
+Run the following two commands in terminal:
 
 ```
 gem install bundler
@@ -250,6 +253,8 @@ Or to go straight to the instructions page using
 ```
 ruby menu.rb instructions
 ```
+
+Enjoy this application!
 
 
 
