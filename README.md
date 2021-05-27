@@ -6,7 +6,7 @@ http://rubyquiz.com/quiz7.html
 
 ## Source Control Repository
 
-
+https://github.com/RoryEvers/make_10
 
 ## Software Development Plan
 
@@ -141,37 +141,17 @@ test examples
 1010
 ```
 
-### Outline of User Interaction
+### User Interaction and Flow
 
-**Develop an outline of the user interaction and experience for the application.**
-**Your outline must include:**
+The user will be given the option of reading how to use the application immediately upon opening. Instructions detail how the game works and which symbols are available. 
 
-- **how the user will find out how to interact with / use each feature**
+The gem TTY Prompt will be used to limit how users can interact with features. The main menu has strictly three options and users only need to use the arrow and enter keys to make a selection. TTY Prompt is also used when users are called to input numbers, to ensure they do not input invalid characters.
 
-The user will be given the option of reading how to use the app, and will be directed through a basic training of how to format their answers in an acceptable way
+If not for TTY prompt and other solutions such as incorporating functions and conditional statements for error handling there would likely be errors resulting from users including letters, negative numbers numbers and symbols that are not allowed for valid solutions and also input that is the wrong length of characters.  
 
-- **how the user will interact with / use each feature**
+The user flow throughout the application is as follows.
 
-While playing a game users will be able to input the four allowable numbers for a pattern and the following extra characters 
-
-```ruby
-["+", "-", "* ", "/" , "**", "(", ")", " ", "pass" ]
-```
-
-While asking for known solutions to a pattern users will only have to input the four numbers
-
-```ruby
-Enter your pattern:
-1234
-```
-
-
-
-- **how errors will be handled by the application and displayed to the user**
-
-There are likely to be errors resulting from users including numbers and symbols that are not allowed for valid solutions
-
-
+![User interaction flowchart - Phase 1](.\docs\Make_10 Phase 1.jpeg)
 
 ### Control Flow
 
@@ -180,13 +160,25 @@ Develop a diagram which describes the control flow of your application. Your dia
 - utilise a recognised format or set of conventions for a control flow diagram, such as UML.
 - 
 
-### Implementation
+## Implementation Plan
 
-Building the terminal application according to the software development plan requires creating modular code, utilising test driven development, and creating minimum viable products for each feature. Adding gems should be done at appropriate times to improve functionality, reduce errors and enhance the appearance of the application. 
+- outlines how each feature will be implemented and a checklist of tasks for each feature
+- prioritise the implementation of different features, or checklist items within a feature
+- provide a deadline, duration or other time indicator for each feature or checklist/checklist-item
+
+Utilise a suitable project management platform to track this implementation plan
+
+> Your checklists for each feature should have at least 5 items.
+
+Building the terminal application according to the software development plan required creating modular code, utilising test driven development, and creating minimum viable products for each feature. Adding gems was done at appropriate times to improve functionality, reduce errors and enhance the appearance of the application. The  detailed plan for implementing each feature is detailed below, but the core strategy was to build a minimum viable product formed by modular features built in order of priority starting with a simple calculator and then the welcome message and instructions and user input, followed by a more advanced calculator and more advanced user input and then gems to improve the user experience last. 
+
+Trello was used to aid in planning and prioritising, and a user story, checklist and due date were created for each feature. Trello could have been utilised more effectively with better knowledge of the options available, and in future projects I will connect features to cards more strategically and use Trello to create sub goals for other parts of of the project such as design. The Trello board is available publicly: https://trello.com/b/QD4AGjA6/user-story-mapping-template
+
+Here is a screenshot of the Trello board completed for Phase 1, with Phase 2 and 3 ready to be populated in future. ![Screen shot of completed Trello](.\docs\Trello_phases.PNG)
 
 #### Test Driven Development
 
-Features could be tested in the process of building. Many display simple text.  The calculator operates using methods for each operation (detailed below), and these can be tested easily as well. Testing is recorded in a separate spreadsheet (Manual Testing Spreadsheet - Test Cases.pdf ) that has been included in the docs folder. All tests passed or failed when expected to. 
+Features could be tested in the process of building. Many display simple text.  The calculator operates using methods for each operation (detailed below), and these can be tested easily as well. Testing is recorded in a separate spreadsheet (Manual_Testing_Spreadsheet.pdf ) that has been included in the docs folder. All tests passed or failed when expected to. 
 
 #### Calculator methods
 
@@ -194,7 +186,7 @@ All versions of the calculator utilise the same basic methods of addition, subtr
 
 #### Welcome
 
-The Welcome message was designed to be brief and functional and was implemented to display ASCII art using the gem Artii (see below) and displays a short message explaining the program, before the menu appears. 
+The welcome message method exists within the Welcome class and was designed to be brief and functional. It was implemented to display ASCII art using the gem Artii (see below) and displays a short message explaining the program, before the menu appears. 
 
 #### Main Menu
 
@@ -202,17 +194,37 @@ The main menu provides three options for the user, to use the calculator, to rea
 
 #### Instructions
 
+The Instructions method resides within the welcome class and is called from the menu. Users can see  the rules of the game and are then presented with the menu again.
+
 #### Gem: TTY Prompt
+
+TTY prompt was included to control the menu function and also to take and control user input for the calculator. TTY prompt was a graceful solution to error handling by limiting user input to only valid selections on the menu and to valid characters for inputting numbers into the calculator.
 
 #### Calculator Version 1
 
+The first version of the calculator utilised the basic calculation methods that reside within the Operations class. The logic flow was to take four digits of input, and to run calculation using two at a time, which would generate a running total, until all four digits were used, at which point if the running total was equal to the goal (10) the calculator would print the equation utilising an array of strings with mathematical operators to insert. 
+
+This calculator worked but was not DRY and was very inefficiently coded. The basic structure of utilising running totals and an array of operations and an array of digits was further utilised in version 2.
+
 #### Calculator Version 2
+
+Several attempts were made to improve the calculator. Investigations into recursion proved exciting but unachievable within the time frame provided. A stable version 2 came from utilising the core concepts of version 1, but redesigned as a single loop that would call itself after each calculation. This required a fundamental change to the way calculations were handled, by calling a single method to perform all mathematical operations at once, by passing four arguments in order to generate a string  once solutions were found to be able to print later, and to utilise a separate method to handle checking whether the running total equalled the goal. Version 2 also used terminal table to format the printing of results. A slight update to version 2 was found late in the development which removed the need to start with a running total of 0 (which required an extra loop of calculations e.g. 0 + 1 + 2 + 3 + 4 = 10), and instead to pass the first digit as the initial running total. 
+
+Future versions will utilise recursion and remove the need for iteration. A core feature that will be required to completely solve the problem is a method that can generate valid patterns of parentheses, and can then call the calculator for each possibility, which will return the solution for printing, but with parentheses as required. This will require a calculator capable of solving patterns of 2 and 3 digits as necessary. This will be covered in phase 2 development.
+
+Future versions must also keep a tally of solutions found in order to let users know when there are no solutions found by printing the message "No solutions have been found". This tally will be useful for phase 3 plans.
 
 #### Gem: Artii
 
+Once the calculator was working and integrated into the other features the focus could switch to aesthetics. The welcome message utilises the gem Artii to display ascii text "Make 10". 
+
 #### Gem: Terminal Table
 
+Solutions found by the calculator are pushed into a table format to aid legibility and add flourish. Future versions could attempt to style solutions in more extravagant ways including colour and movement. 
+
 #### Gem: Colorize
+
+The gem Colorize was implemented for the logo "Make 10" in the welcome message and for headings on the instructions and get digits methods to let users know which feature they are using and improve the design of the site.
 
 #### Error Handling
 
@@ -224,25 +236,39 @@ Handling potential errors for inputting numbers required much more consideration
 
 Each operation used for calculation was tested manually and using RSPEC. The design of the main calculator made it unnecessary to go to efforts to avoid division by zero, as for occasions where division by zero occurs, it naturally cannot result in a solution that equals 10 and the loop continues on down paths where no division by zero occurred. 
 
-#### Command line 
+#### Bash Scripts & Command line 
 
-ruby openingmessages.rb calculator
+Once the working application was completed two bash scripts were created. 
 
-## Develop an implementation plan which:
+To start from the usual welcome, make_10.sh can be used by inputting the following in the terminal if you are in the "src" directory:
 
-- outlines how each feature will be implemented and a checklist of tasks for each feature
-- prioritise the implementation of different features, or checklist items within a feature
-- provide a deadline, duration or other time indicator for each feature or checklist/checklist-item
+```
+./make_10.sh
+```
 
-Utilise a suitable project management platform to track this implementation plan
+To start straight from the calculator, calculator.sh can be used by inputting the following in the terminal if you are in the "src" directory:
 
-> Your checklists for each feature should have at least 5 items.
+```
+./calculator.sh
+```
+
+It is also possible to go straight to parts of the applications using command line without bash scripts. To go straight to the calculator and avoid the welcome screen you can use:
+
+```
+ruby menu.rb calculator
+```
+
+Or to go straight to the instructions page use:
+
+```
+ruby menu.rb instructions
+```
 
 ### Help Documentation
 
-Your computer must have Ruby installed. Follow the instructions here to [download and install](https://www.ruby-lang.org/en/documentation/installation/). 
+To use this application your computer must have Ruby installed. Follow the instructions here to [download and install](https://www.ruby-lang.org/en/documentation/installation/). 
 
-Next open the "src" folder, where you can view all the files necessary for this application to run without error.
+Open the "src" folder, where you can view all the files necessary for this application to run without error.
 
 This application makes use of several gems to enhance functionality and appearance, and will require you to install bundler first which can then be used to install the other gems. Run the following two commands in terminal:
 
