@@ -109,13 +109,13 @@ If not for TTY prompt and other solutions such as incorporating functions and co
 
 The user flow throughout the application is as follows.
 
-![User interaction flowchart - Phase 1](.\docs\Make_10 Phase 1.jpeg)
+![User interaction flowchart - Phase 1](.\docs\Make_10_Phase_1.jpeg)
 
 ### Control Flow
 
 In addition to the flowchart of the whole application shown above which clearly shows the repeating loop returning the user to the main menu, the workings of calculator v2 are shown in the diagram below. 
 
-![Control flow of Calculator V2](.\docs\Calculator Logic Flow.png)
+![Control flow of Calculator V2](.\docs\Calculator_Logic_Flow.png)
 
 ## Implementation Plan
 
@@ -127,7 +127,9 @@ Here is a screenshot of the Trello board completed for Phase 1, with Phase 2 and
 
 #### Test Driven Development
 
-Features could be tested in the process of building. Many display simple text.  The calculator operates using methods for each operation (detailed below), and these can be tested easily as well. Testing is recorded in a separate spreadsheet (Manual_Testing_Spreadsheet.pdf ) that has been included in the docs folder. All tests passed or failed when expected to. 
+Features could be tested in the process of building. Many display simple text.  The calculator operates using methods for each operation (detailed below), and these can be tested easily as well. Testing is recorded in a separate spreadsheet. that has been included in the docs folder. All tests passed or failed when expected to. 
+
+[Manual Testing Spreadsheet]: .\docs\Manual_Testing_Spreadsheet.pdf
 
 #### Calculator methods
 
