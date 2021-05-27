@@ -5,9 +5,10 @@ require "colorize"
 require "tty-prompt"
 require "artii"
 
-
+# Welcome class containing instructions, welcome message, menu, user input and error handling, conversion of user input into usable forms
 class Welcome < TTY::Prompt
     @@prompt = TTY::Prompt.new
+    # Opening welcome message and ascii art
     def welcome_message
         system("clear")
         a = Artii::Base.new :font => 'slant'
@@ -15,6 +16,7 @@ class Welcome < TTY::Prompt
         puts ("This app can find solutions for the game Make 10.")
     end 
 
+    # Instructions on how to play the game
     def instructions
         system("clear")
         puts ("Instructions").colorize(:white).on_green
@@ -51,12 +53,12 @@ class Welcome < TTY::Prompt
         end
     end
 
+    # Take user input for calculator using TTY Prompt
     def ask_for_digits
         puts ("Calculator").colorize(:white).on_green
         variables = []
         input = @@prompt.ask("Enter a number between 1000 and 9999 e.g. 1234:") do |q|
             q.convert -> (input) { input.split(/[\s]/) }
-            # q.validate(/[0-9\ ]{4}/)
             q.convert(:integer, "Invalid input. Try again.")
           end
        
@@ -85,7 +87,7 @@ class Welcome < TTY::Prompt
         end
         
     end
-
+# Convert user input into floats to allow for division
     def object_to_float(array)
         array.map(&:to_f)
     end

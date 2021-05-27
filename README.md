@@ -2,7 +2,11 @@
 
 ## Referenced Sources
 
+When researching possibilities for more advanced calculators using recursion I learned important lessons from the following projects that created applications to find solutions to the numbers game on the television show Countdown. No code was taken from them, only inspiration. 
+
 http://rubyquiz.com/quiz7.html
+
+https://www.codeproject.com/Articles/740035/Countdown-Number-Puzzle-Solver
 
 ## Source Control Repository
 
@@ -10,74 +14,78 @@ https://github.com/RoryEvers/make_10
 
 ## Software Development Plan
 
-### Purpose & Scope (500 words)
+### Purpose & Scope 
 
-- **describe at a high level what the application will do**
+This application will enhance the experience of people playing the game "Make 10". "Make 10" is played using the four digit carriage number found on Sydney trains. Players try different equations made using the four digits, combined with valid mathematical operations (addition, subtraction, division, multiplication, exponentiation and parentheses) in order to find ways to reach a total of 10. Some patterns are easier than others, and some are impossible. Some numbers have multiple ways of solving them. It is also possible to use two digit numbers, but players are not allowed to rearrange the numbers or use decimal points, square roots, logarithms or any other mathematical operation. 
 
-This application will enhance the experience of people playing the game "Make 10". "Make 10" is played by taking the four digit carriage number found on Sydney trains and using the order of operations to find ways to add, minus etc to get a total of 10. Some numbers are easier than others, and some are impossible. Some numbers have multiple ways of solving them. 
+Some test examples of how the game is played:
 
-- **identify the problem it will solve and explain why you are developing it**
+```
+6140 => ( 6 * 1 ) + 4 + 0 = 10
+7544 => 7 - 5 + 4 + 4 = 10
+5555 => 5 + 5 - 5 + 5 = 10
+1010 => 10 * 1 + 0 = 10
+```
 
-Although it is simple to check whether an equation equals 10 or not, it is more difficult to find solutions when the player is stuck. When I was in high school I used to play this game with my friends, and even made a simple program that could find solutions in a very inelegant way, by iterating through thousands of lines of written code to try every combination. I would like to create a more elegant solution that could still make use of a computer's ability to quickly try thousands of combinations. 
+It can be frustrating to be unable to find a solution and remain unsure whether one exists. This application can quickly solve for many solutions, and with future versions will be able to solve for all solutions. 
 
-**This app would ideally have two main features and a variety of smaller features that would improve the user experience** 
-
-**1) the ability to find known solutions for a particular pattern**
-
-**2) play a game where the program provides solvable patterns of different difficulties (judged by quantity of operations and possibly also number of possible solutions)**
-
-- **identify the target audience**
+Although it is simple to check whether an equation equals 10 or not, it is more difficult to calculate all possible solutions. I used to play this game with my friends when I was in high school, and even made a simple program that could find solutions in a very inelegant way, by iterating through thousands of lines of written code to try every combination. I would like to create a more elegant solution that could still make use of a computer's ability to quickly try thousands of combinations. 
 
 The target audience will mostly be high school age children who are interested in maths games and competing with their friends, but would likely include other commuters. 
 
-- **explain how a member of the target audience will use it**
+For the purposes of this assignment the app would be used by opening ruby or bash files, and so could be used on laptop computers when students get to school.  A better future version would be a mobile application to solve patterns and help the individual player to train on solvable patterns of four digit numbers while on the train.
 
-For the purposes of this assignment the app would exist only as a .exe file and so could be used on laptop computers when students get to school. This program exists to help the individual player to train on solvable patterns of four digit numbers, and also to be able to find solutions to patterns they were not able to solve on the train.
+### Features 
 
-### Features (100words x 3 at least)
+This app would ideally have two main features and a variety of smaller features that would improve the user experience.
 
-- **describe each feature**
-- **use of variables and the concept of variable scope**
-- **loops and conditional control structures**
-- **error handling**
+The main feature is a calculator that can take valid user inputs of 4 digits and calculate all possible combinations of mathematical operators, before returning all found solutions to the user. Multiple versions will be required, starting with a minimum viable product and moving towards a more complex and robust version that can solve for a variety of patterns involving parentheses. 
 
+More advanced calculators will require more variables. By keeping all calculator functions within a single class (Operations), variables will be more easily controlled. User digits are input using a method within the menu class, which are then converted into a usable format or deemed invalid, before the calculate method is called from menu, by first creating a new variable that calls the operations class. Calculator v2 duplicates and updates an array to store all operations that have been performed in order to be able to print solutions once the calculator has finished operating. 
 
+Error handling for the calculator is controlled by limiting user input to valid characters by utilising TTY Prompt, and by reusing smaller methods that can be tested individually. Error handling is discussed in much more depth in the implementation plan.
+
+In the future the second main feature would be a game where the user is presented with solvable patterns of numbers, and then has the opportunity to devise solutions and input them for confirmation. This feature must wait until a more advanced calculator has been built. 
+
+The other features are implemented to better enable the user to effectively use the application. The user is first presented with the welcome message, which contains a sentence letting them know the application is running and also a main heading with ascii art to enhance the experience. Underneath the welcome is the menu feature. The menu presents three options to the user, and if they choose to read instructions or use the calculator then their respective methods are called from elsewhere within the welcome class. The instructions are available to be read and are stored as a method to be called from the menu.
+
+A Boolean variable is created to determine whether a user wants to quit the application or not, and if the user chooses quit from the menu they are shown a one sentence message and then the application ends. A loop is created to show the menu again after each calculation is performed or the instructions are shown. 
 
 This app will be made in phases with increasing functionality as time allows. 
 
 #### Phase One 
 
-To build the minimum viable product. A calculator that can find and print a single solution to a 4 digit number pattern and then end without finding all possible solutions, using only single digit numbers, and would use modules to avoid repetitious code. This would involve several features:
+To build the minimum viable product. A calculator that can find and print a single solution to a 4 digit number pattern and then end without finding all possible solutions, using only single digit numbers, and would use modules to avoid repetitious code. 
 
-##### Display a welcome message
+**Display a welcome message**
 
-##### Display instructions
+**Display the menu**
 
-##### Give users the choice to play
+**Give users the choice to use the calculator, read instructions or quit**
 
-##### Have the user input 4 numbers
+**Have the user input 4 numbers**
 
-##### Calculate how  to solve the pattern
+**Calculate how  to solve the pattern**
 
-##### Print the solution for the user if there is one, or display a message that no solution was found, give the choice to continue
+**Print the solution for the user if there is one, or display a message that no solution was found**
 
+**Present the menu again until users choose quit**
 
+All features were implemented successfully for phase one except for the ability to print that no solution was found, instead the user is just returned to the menu to choose again. This must be implemented in future versions as part of a tally that records found solutions for every pattern.
 
 #### Phase Two
 
-##### Expanded capability to solve patterns by also trialling combinations with two digit numbers
+**Expanded capability to solve patterns by also trialling combinations with two digit numbers**
 
-##### Print how many combinations were tested before finding a solution
-
-
+**A method to take the four digit input and generate all possible combination of parentheses, and then to call the calculator for each of them.** 
 
 #### Phase Three
 
-##### All patterns from 0000 to 9999 solved for a single solution and stored in external file
+**All possible patterns for every number solved, and tally of solutions per number stored in external file**
 
-##### User can select to play a game or use the calculator
+**User can select to play a game where they are given random solvable patterns and the chance to solve them or view hints**
 
-If user selects game a single random pattern with a known solution is presented to the user 
+If the user selects game a single random pattern with a known solution is presented to the user 
 
 User may attempt to solve the pattern by inputting valid characters and symbols
 
@@ -87,59 +95,9 @@ Print whether their attempt solves the pattern
 
 Offer the chance to play again or use the calculator
 
+Divide patterns into difficulty levels
 
 
-
-
-
-
-
-
-Depending how much progress I make, it may just have the ability to check people's answers, but ideally I have some methods that can go and find which of the 10000 numbers (0000-9999) are possible to solve, and then divide them based on the number of operations required (total of "+", total of "**") and have 3 tiers of difficulty.
-
-
-
-I would probably have the list of mathematical symbols in an array, and each of the four numbers would be given a value (a,b,c,d). There would be 2-3 spaces between each value, and all symbols would be iterated through in a loop until the thousands have been tried and it found any combinations that = 10
-the 2-3 spaces are for combinations like *(- etc
-the start and end only need 2 but the middle ones need 3
-the start will never have ) for example as well
-
-
-
-to save processing power it would be ideal to have all known solutions in a saved file instead of running millions of operations every time the program is turned on
-
-
-
-
-
-Phase 1: I would just be making a loop that solves a 4 digit number that the user inputs (.e.g 1234) The program would loop through every possibility for how to add, multiply etc the four numbers in order, and then print all solutions. (e.g. 1+2+3+4 = 10, (1 x 2 x 3) +4 = 10 etc) Phase 2 If there is still time I would include the ability to make 2 digit numbers out of user input as well (e.g. 1000 could become 10 + 0 + 0 = 10) Phase 3 If there is still a lot of time, I would solve all 10000 numbers and assign each of them a difficulty (e.g. Easy just requires + and - to solve, medium requires everything except exponentials, Hard could require anything, Psychotic is for numbers deemed unsolvable by current equations).  The user could select their difficulty and get assigned patterns until they decide to increase their difficulty, they would also be assigned a streak length.  The program would just have to know which numbers were which difficulty beforehand, it wouldnt need all known solutions saved in a file like I said yesterday.
-
-No. It would use the calculator to solve them live when requested by the user
-
-
-
-But if I were to have a full game with difficulty levels, it would require more forethought to avoid users getting unsolvable patterns
-
-
-
-but for this assignment I can probably only do Phase 1
-
-
-
-maybe phase 2
-
-Yeah I would just work to have a calculator algorithm that can make 10 out of user input and return "no known solutions" or something if it can't solve There will be all sorts of errors to avoid with the calculator, such as brackets that aren't closed, nil, strings not integers etc, dividing by zero
-
-
-
-test examples 
-
-```
-6140
-7544
-5555
-1010
-```
 
 ### User Interaction and Flow
 
@@ -155,20 +113,11 @@ The user flow throughout the application is as follows.
 
 ### Control Flow
 
-Develop a diagram which describes the control flow of your application. Your diagram must:
-- show the workflow/logic and/or integration of the features in your application for each feature.
-- utilise a recognised format or set of conventions for a control flow diagram, such as UML.
-- 
+In addition to the flowchart of the whole application shown above which clearly shows the repeating loop returning the user to the main menu, the workings of calculator v2 are shown in the diagram below. 
+
+![Control flow of Calculator V2](.\docs\Calculator Logic Flow.png)
 
 ## Implementation Plan
-
-- outlines how each feature will be implemented and a checklist of tasks for each feature
-- prioritise the implementation of different features, or checklist items within a feature
-- provide a deadline, duration or other time indicator for each feature or checklist/checklist-item
-
-Utilise a suitable project management platform to track this implementation plan
-
-> Your checklists for each feature should have at least 5 items.
 
 Building the terminal application according to the software development plan required creating modular code, utilising test driven development, and creating minimum viable products for each feature. Adding gems was done at appropriate times to improve functionality, reduce errors and enhance the appearance of the application. The  detailed plan for implementing each feature is detailed below, but the core strategy was to build a minimum viable product formed by modular features built in order of priority starting with a simple calculator and then the welcome message and instructions and user input, followed by a more advanced calculator and more advanced user input and then gems to improve the user experience last. 
 
@@ -279,8 +228,6 @@ gem install bundler
 ```
 bundle install 
 ```
-
-
 
 Once you have the gems, it is time to calculate! 
 
